@@ -1,0 +1,81 @@
+% 固定模板后置部分：三、个人简历；四、附件；附件材料表
+% 本文件由 ynfund2027.sty 调用，一般不要修改。
+
+\clearpage
+
+\YNMainHeadingInline{三、个人简历}{（根据申请人在线填写信息自动生成简历PDF文件）}
+
+\YNMainHeading{四、附件}
+
+\YNOutlineHeading{（一）附件目录}
+
+\YNFixedPara{附件目录按所上传电子附件材料的名称和顺序自动生成。}
+
+\YNOutlineHeading{（二）附件材料（逐项上传）}
+
+\YNFixedPara{1.提供5篇以内申请人本人公开发表的与申请项目相关的代表性论文电子版文件；}
+
+% 强制单行显示，避免“扫描文件：”被拆开。
+\YNFixedOneLinePara{2.根据项目申请的需要，附件材料包含以下电子版扫描文件：}
+
+\vspace{4pt}
+
+% =========================
+% 附件材料表：模拟 Word 普通网格表
+% 表格总宽度尽量接近正文宽度
+% =========================
+
+\begingroup
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.22}
+\setlength{\arrayrulewidth}{0.5pt}
+
+% 当前正文宽度约 15.60 cm。
+% 四列宽度合计 14.35 cm，加上左右 cell padding 和竖线后，
+% 表格总宽度约等于正文宽度。
+\begin{longtable}{|C{1.20cm}|L{6.75cm}|L{4.05cm}|L{2.35cm}|}
+\hline
+{\YNTableHeaderFont 序号}
+&
+\centering{\YNTableHeaderFont 附件名称}
+&
+\centering{\YNTableHeaderFont 备注}
+&
+\centering\arraybackslash{\YNTableHeaderFont 附件类型}
+\\
+\hline
+\endfirsthead
+
+\hline
+{\YNTableHeaderFont 序号}
+&
+\centering{\YNTableHeaderFont 附件名称}
+&
+\centering{\YNTableHeaderFont 备注}
+&
+\centering\arraybackslash{\YNTableHeaderFont 附件类型}
+\\
+\hline
+\endhead
+
+{\YNTableNumberFont 1}  & {\YNTableBodyFont 个人承诺书} & {\YNTableBodyFont 必填} & \\ \hline
+{\YNTableNumberFont 2}  & {\YNTableBodyFont 单位承诺书} & {\YNTableBodyFont 必填} & \\ \hline
+{\YNTableNumberFont 3}  & {\YNTableBodyFont 签字盖章页} & {\YNTableBodyFont 必填} & \\ \hline
+{\YNTableNumberFont 4}  & {\YNTableBodyFont 代表性成果（限5项以内）} & {\YNTableBodyFont 必填} & \\ \hline
+{\YNTableNumberFont 5}  & {\YNTableBodyFont 重大项目指南方向（须注明符合第几项指南或上传申报说明）} & {\YNTableBodyFont 重大项目必填} & \\ \hline
+{\YNTableNumberFont 6}  & {\YNTableBodyFont 经费预算书} & {\YNTableBodyFont 重大项目必填} & \\ \hline
+{\YNTableNumberFont 7}  & {\YNTableBodyFont 博士学历证书} & {\YNTableBodyFont 政策支持类必填} & \\ \hline
+{\YNTableNumberFont 8}  & {\YNTableBodyFont 博士学位证书} & {\YNTableBodyFont 政策支持类必填} & \\ \hline
+{\YNTableNumberFont 9}  & {\YNTableBodyFont 全职聘用合同} & {\YNTableBodyFont 政策支持类必填} & \\ \hline
+{\YNTableNumberFont 10} & {\YNTableBodyFont 自然指数排名前100位证明材料或专业所属学科ESI全球前1‰证明材料} & {\YNTableBodyFont 政策支持类非必填} & \\ \hline
+{\YNTableNumberFont 11} & {\YNTableBodyFont 专家推荐信} & {\YNTableBodyFont 青C项目非必填} & \\ \hline
+{\YNTableNumberFont 12} & {\YNTableBodyFont 合作协议} & {\YNTableBodyFont 非必填} & \\ \hline
+{\YNTableNumberFont 13} & {\YNTableBodyFont 伦理委员会证明} & {\YNTableBodyFont 非必填} & \\ \hline
+{\YNTableNumberFont 14} & {\YNTableBodyFont 依托单位生物安全承诺} & {\YNTableBodyFont 非必填} & \\ \hline
+{\YNTableNumberFont 15} & {\YNTableBodyFont 实验动物生产和使用许可证} & {\YNTableBodyFont 非必填} & \\ \hline
+{\YNTableNumberFont 16} & {\YNTableBodyFont 其他证明材料} & {\YNTableBodyFont 非必填} & \\ \hline
+
+\end{longtable}
+\endgroup
