@@ -47,7 +47,7 @@
 \RequirePackage{longtable}
 \RequirePackage{array}
 \RequirePackage{fancyhdr}
-
+\RequirePackage{titlesec}
 %正文中引用文献的角标或者作者名和年份设置为黑色
 %\RequirePackage[unicode,colorlinks=false,pdfborder={0 0 0}]{hyperref}
 
@@ -199,7 +199,7 @@
 }
 
 
-\setcounter{secnumdepth}{-2}
+\setcounter{secnumdepth}{3}
 
 % 尽量避免中文字距被拉大
 \raggedright
@@ -445,35 +445,116 @@
 }
 
 \newcommand{\YNSectionLixiang}{
+  \YNSetMajor{1}
   \YNOutlineHeading{（一）立项依据}
   \YNFixedPara{（为什么要开展此项研究，研究的科学技术价值如何）}
 }
 
 \newcommand{\YNSectionYanjiuNeirong}{
+  \YNSetMajor{2}
   \YNOutlineHeading{（二）研究内容}
   \YNFixedPara{（提纲不做限制，请按照研究工作的自身逻辑撰写。应提炼出特色与创新点、年度研究计划）}
 }
 
 \newcommand{\YNSectionYanjiuJichu}{
+  \YNSetMajor{3}
   \YNOutlineHeading{（三）研究基础}
 }
 
-\newcommand{\YNSectionOther}{%
+\newcommand{\YNSectionOther}{
+  \YNSetMajor{4}
   \YNOutlineHeading{（四）其他需要说明的情况}
+}
+
+
+% =========================
+% 参考文献格式
+% =========================
+
+% 参考文献列表字体：五号，正常字重
+% 中文用方正仿宋GBK，英文和数字用 Times New Roman 正常体
+\newcommand{\YNBibFont}{%
+  \normalfont
+  \ynfangsong
+  \fontsize{9pt}{15pt}\selectfont
 }
 
 \newcommand{\YNReferences}{%
   \begingroup
   \setstretch{1.0}
-  \wuhao
-  \renewcommand{\refname}{{\ynhei\sanhao 参考文献}}
-  \bibliographystyle{gbt7714-numerical}  %正文中显示右上数字角标，文献列表按出现先后编号排序
+  \YNBibFont
+  % “参考文献”标题：方正楷体GBK，三号，与正文说明文字接近
+  \renewcommand{\refname}{{\ynkai\sanhao 参考文献}}
+    \bibliographystyle{gbt7714-numerical}  %正文中显示右上数字角标，文献列表按出现先后编号排序
   %\bibliographystyle{gbt7714-author-year}  %正文中显示坐着年份，文献列表按出现先后排序，不编号
   \bibliography{ref}
   \endgroup
 }
 
 
+% =========================
+% 正文内部 section/subsection/subsubsection 编号逻辑
+%
+% 逻辑：
+%   （一）立项依据：section 从 1.1 开始，subsection 从 1.1.1 开始
+%   （二）研究内容：section 从 2.1 开始，subsection 从 2.1.1 开始
+%   （三）研究基础：section 从 3.1 开始，subsection 从 3.1.1 开始
+%   （四）其他说明：section 从 4.1 开始，subsection 从 4.1.1 开始
+%   subsubsection 使用 （a）（b）（c） 编号
+% =========================
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% 当前官方提纲大节编号：
+% 1 = （一）立项依据
+% 2 = （二）研究内容
+% 3 = （三）研究基础
+% 4 = （四）其他需要说明的情况
+\newcounter{YNmajor}
+
+% 进入每个官方提纲大节时，重置 section/subsection/subsubsection 计数
+\newcommand{\YNSetMajor}[1]{%
+  \setcounter{YNmajor}{#1}%
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \setcounter{subsubsection}{0}%
+}
+
+% 编号格式
+\renewcommand{\thesection}{\arabic{YNmajor}.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{（\alph{subsubsection}）}
+
+% section/subsection/subsubsection 的显示格式
+% 这里统一使用正文仿宋三号加粗，缩进 2em，避免 LaTeX 默认标题过大
+\titleformat{\section}
+  {\YNBodyFont\bfseries}
+  {\thesection}
+  {0.5em}
+  {}
+
+\titleformat{\subsection}
+  {\YNBodyFont\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {}
+
+\titleformat{\subsubsection}
+  {\YNBodyFont\bfseries}
+  {\thesubsubsection}
+  {0.5em}
+  {}
+
+% 标题前后间距，可按 Word 效果微调
+\titlespacing*{\section}
+  {2em}{0.4\baselineskip}{0.2\baselineskip}
+
+\titlespacing*{\subsection}
+  {2em}{0.3\baselineskip}{0.1\baselineskip}
+
+\titlespacing*{\subsubsection}
+  {2em}{0.2\baselineskip}{0.1\baselineskip}
 
 % =========================
 % Override: 固定模板内容改为外部文件输入
