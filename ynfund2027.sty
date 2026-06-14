@@ -26,7 +26,7 @@
 % 这将是对作者整理、维护和分享本模板的最好鼓励。
 %
 % 详细使用说明见 README.md。
-
+\usepackage{ulem}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{ynfund2027}[2027 Yunnan Basic Research Proposal Template]
 
@@ -47,7 +47,13 @@
 \RequirePackage{longtable}
 \RequirePackage{array}
 \RequirePackage{fancyhdr}
-\RequirePackage[unicode,colorlinks=false,pdfborder={0 0 0}]{hyperref}
+
+%正文中引用文献的角标或者作者名和年份设置为黑色
+%\RequirePackage[unicode,colorlinks=false,pdfborder={0 0 0}]{hyperref}
+
+%正文中引用文献的角标或者作者名和年份设置为篮色
+\RequirePackage[unicode,colorlinks=true,citecolor=blue,linkcolor=black, urlcolor=blue]{hyperref}
+
 \RequirePackage{natbib}
 \RequirePackage{gbt7714}
 
