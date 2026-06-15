@@ -463,6 +463,13 @@ FUNCTION {emphasize}
   if$
 }
 
+FUNCTION {title.italic.font}
+{ duplicate$ empty$
+    { pop$ "" }
+    { "\YNBibTitleFont{" swap$ * "}" * }
+  if$
+}
+
 FUNCTION {format.btitle}
 { italic.book.title
   entry.lang lang.en = and
@@ -833,6 +840,7 @@ FUNCTION {format.title}
         'add.link
         'skip$
       if$
+      title.italic.font
     }
   if$
 }

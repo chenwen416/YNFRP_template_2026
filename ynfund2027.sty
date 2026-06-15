@@ -147,6 +147,19 @@
   Ligatures = TeX
 ]{times.ttf}
 
+\newfontfamily\ynbibtitleitalic[
+  Path = fonts/,
+  UprightFont = timesi.ttf,
+  Ligatures = TeX
+]{timesi.ttf}
+
+\newif\ifYNBibTitleItalic
+\YNBibTitleItalictrue
+
+\newcommand{\YNBibTitleFont}[1]{%
+  {\ifYNBibTitleItalic\ynbibtitleitalic #1\else #1\fi}%
+}
+
 % =========================
 % 中文断行和字间距
 % =========================
@@ -483,6 +496,8 @@
   \begingroup
   \setstretch{1.0}
   \YNBibFont
+  \YNBibTitleItalictrue   % 参考文献文章题目使用 timesi.ttf 斜体
+  %\YNBibTitleItalicfalse % 参考文献文章题目使用正体
   % “参考文献”标题：方正楷体GBK，三号，与正文说明文字接近
   \renewcommand{\refname}{{\ynkai\sanhao 参考文献}}
     \bibliographystyle{gbt7714-numerical}  %正文中显示右上数字角标，文献列表按出现先后编号排序

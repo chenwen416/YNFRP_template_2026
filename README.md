@@ -1,6 +1,6 @@
 # 云南省基础研究计划项目申请书 LaTeX 模板（2027 版）
 
-> **当前版本：ver.260614.1**  
+> **当前版本：ver.260615**  
 > 非官方 LaTeX 模板。请最终以云南省科技厅系统、官方 Word 模板和当年申报通知为准。
 
 ---
@@ -38,6 +38,7 @@ your-project/
 | `ver.260613` | 初版模板。完成云南省基础研究计划项目申请书 2027 版 Word 提纲向 LaTeX 模板的基本转换。 |
 | `ver.260614` | 新增正文中参考文献角标、作者及年份显示为蓝色的功能。主要修改 `ynfund2027.sty` 中 `hyperref` 相关设置。 |
 | `ver.260614.1` | 新增正文内部 `\section{}`、`\subsection{}`、`\subsubsection{}` 自动编号功能；在“（一）立项依据”中编号从 `1.1`、`1.1.1` 开始，在“（二）研究内容”中从 `2.1`、`2.1.1` 开始，在“（三）研究基础”中从 `3.1`、`3.1.1` 开始，`\subsubsection{}` 使用 `（a）`、`（b）`、`（c）` 形式编号。同时优化参考文献格式：将“参考文献”标题改为方正楷体 GBK，并将参考文献列表字体调整为较细的 9 pt 显示效果。 |
+| `ver.260615` | 新增参考文献列表中文章题名正体/斜体切换功能。默认使用 `fonts/timesi.ttf` 显示英文文章题名斜体；如需正体，可在 `ynfund2027.sty` 的 `\YNReferences` 中切换 `\YNBibTitleItalictrue` / `\YNBibTitleItalicfalse`。同步调整 `gbt7714-numerical.bst` 和 `gbt7714-author-year-.bst`，使文章题名通过模板命令统一控制。 |
 
 ---
 
@@ -227,6 +228,28 @@ archivePrefix = {arXiv},
 ```
 
 如果希望使用作者-年份格式，需要同时修改 `ynfund2027.sty` 中的参考文献样式设置；默认建议使用数字制，更节省空间。
+
+参考文献列表中的文章题名默认使用 `fonts/timesi.ttf` 斜体显示。若希望改为正体，可在 `ynfund2027.sty` 的 `\YNReferences` 中切换以下两行：
+
+```latex
+\YNBibTitleItalictrue   % 文章题名使用 timesi.ttf 斜体
+%\YNBibTitleItalicfalse % 文章题名使用正体
+```
+
+如需正体，改为：
+
+```latex
+%\YNBibTitleItalictrue
+\YNBibTitleItalicfalse
+```
+
+由于该功能涉及 BibTeX 样式文件，修改后建议重新执行：
+
+```text
+XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX
+```
+
+在 Overleaf 中可使用 “Recompile from scratch” 以确保参考文献列表更新。
 
 ## 8. 插入图像
 
