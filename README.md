@@ -1,6 +1,6 @@
 # 云南省基础研究计划项目申请书 LaTeX 模板（2027 版）
 
-> **当前版本：ver.260620**  
+> **当前版本：ver.260627**  
 > 非官方 LaTeX 模板。请最终以云南省科技厅系统、官方 Word 模板和当年申报通知为准。
 
 ---
@@ -21,6 +21,7 @@ your-project/
     timesi.ttf
     timesbi.ttf
     方正仿宋GBK.ttf
+    仿宋GB2312.ttf
     方正小标宋简体.ttf
     方正楷体GBK.ttf
     方正黑体GBK.ttf
@@ -41,6 +42,7 @@ your-project/
 | `ver.260615` | 新增参考文献列表中文章题名正体/斜体切换功能。默认使用 `fonts/timesi.ttf` 显示英文文章题名斜体；如需正体，可在 `ynfund2027.sty` 的 `\YNReferences` 中切换 `\YNBibTitleItalictrue` / `\YNBibTitleItalicfalse`。同步调整 `gbt7714-numerical.bst` 和 `gbt7714-author-year-.bst`，使文章题名通过模板命令统一控制。 |
 | `ver.260616` | 新增正文局部字体命令 `\textbfk{...}`：括号内汉字使用方正楷体 GBK，英文、数字和符号仍按 Times New Roman 正常加粗。 |
 | `ver.260620` | 新增 `\subsection{...}` 标题字体控制：使用 `\subsection[kai]{...}` 或 `\subsection[bfk]{...}` 可仅将当前 subsection 标题中的汉字切换为方正楷体 GBK 加粗，英文、数字和符号保持正常加粗；也可用 `\YNSubsectionKaiBoldtrue` / `\YNSubsectionKaiBoldfalse` 做全局开关。 |
+| `ver.260627` | 区分模板固定说明文字与用户正文文字：官方提纲、说明文字等固定内容保持方正仿宋 GBK；`sections/` 中用户直接撰写的正文、正文内部 `\section{}` / `\subsection{}` / `\subsubsection{}` 默认改为仿宋 GB2312。 |
 
 ---
 
@@ -114,6 +116,7 @@ fonts/
   timesi.ttf
   timesbi.ttf
   方正仿宋GBK.ttf
+  仿宋GB2312.ttf
   方正小标宋简体.ttf
   方正楷体GBK.ttf
   方正黑体GBK.ttf
@@ -154,7 +157,8 @@ XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX
 
 - 题名：方正小标宋简体，二号；
 - 一级标题：方正黑体简体，三号；
-- 正文：方正仿宋 GBK，三号；
+- 模板固定说明文字：方正仿宋 GBK，三号；
+- 用户正文：仿宋 GB2312，三号；
 - 提纲标题：方正楷体 GBK，三号；
 - 页码和英文/数字：Times New Roman。
 
@@ -185,7 +189,7 @@ sections/03_1_jichu_kexingxing.tex
 
 在这些文件中直接写正文即可，不需要再手动套用 `\YNFixedPara{...}` 命令。模板已经设置了默认正文格式：
 
-- 中文为方正仿宋 GBK 三号；
+- 中文为仿宋 GB2312 三号；
 - 英文、数字为 Times New Roman；
 - 段首自动缩进两个字符；
 - 段间距为 0。
